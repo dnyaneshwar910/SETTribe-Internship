@@ -3,6 +3,7 @@ package com.SETTribe.Controller;
 import com.SETTribe.Model.Admission;
 import com.SETTribe.Service.AdmissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,9 +15,9 @@ public class AdmissionController {
     private AdmissionService admissionService;
 
     @PostMapping("/submit")
-    public String submitAdmission(@RequestBody Admission admission) {
+    public ResponseEntity<String> submitAdmission(@RequestBody Admission admission) {
         admissionService.submitAdmission(admission);
-        return "Admission submitted successfully!";
+        return ResponseEntity.ok("Admission submitted successfully!");
     }
 
     @GetMapping("/all")
